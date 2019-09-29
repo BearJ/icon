@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import 'weui';
+import '@/libs/svg2css';
 
 export default {};
 </script>

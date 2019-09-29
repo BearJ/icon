@@ -1,5 +1,5 @@
 <template>
-  <div :class="'weui-icon-' + type + '-' + name" @click="showCSSText"></div>
+  <div :class="'weui-icon-' + type + '-' + name" @click="clickIcon"></div>
 </template>
 
 <script lang="ts">
@@ -19,13 +19,52 @@ export default Vue.extend({
       type: Object as () => Record<string, string>,
     },
   },
+  created() {
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = svg2css({
+      [`${this.type}-${this.name}`]: this.map[this.name],
+    });
+    document.head.appendChild(style);
+  },
   methods: {
-    showCSSText(): void {
-      copy(this.map[this.name]).then((): void => {
-        weui.toast('Copy!', {
-          duration: 800,
-        });
-      });
+    clickIcon(): void {
+      const actionSheet = weui.actionSheet(
+        [
+          {
+            label: 'Copy CSS',
+            onClick: () => {
+              copy(
+                svg2css({
+                  [`${this.type}-${this.name}`]: this.map[this.name],
+                }),
+              ).then((): void => {
+                weui.toast('Copy!', {
+                  duration: 800,
+                });
+              });
+            },
+          },
+          {
+            label: 'Copy SVG',
+            onClick: () => {
+              copy(this.map[this.name]).then((): void => {
+                weui.toast('Copy!', {
+                  duration: 800,
+                });
+              });
+            },
+          },
+        ],
+        [
+          {
+            label: 'Cancel',
+            onClick: () => {
+              actionSheet.hide();
+            },
+          },
+        ],
+      );
     },
   },
 });

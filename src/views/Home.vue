@@ -45,15 +45,6 @@ export default Vue.extend({
       svgIcons,
     };
   },
-  beforeCreate() {
-    allStyle = svgIcons['weui-icon'];
-    delete svgIcons['weui-icon'];
-
-    const style = document.createElement('style');
-    style.type = 'text/css';
-    style.innerHTML = allStyle;
-    document.head.appendChild(style);
-  },
   methods: {
     downloadAll() {
       const eleLink = document.createElement('a');
