@@ -1,6 +1,6 @@
 {
   "name": "weui-icon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "styles/weui-icon.css",
   "scripts": {
     "convert": "svgo src/assets/* && node build/convert.js",
