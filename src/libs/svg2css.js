@@ -1,28 +1,21 @@
 /* eslint-disable */
-const commonStyle =
-`display: inline-block;
+
+const headerTmpl =
+`[class^="weui-icon-"], [class*=" weui-icon-"] {
+  display: inline-block;
   vertical-align: middle;
-  width: 30px;
-  height: 30px;
-  background-color: currentColor;`;
-
-const singleFileTmpl =
-`.weui-icon-[name] {
-  ${commonStyle}
-  -webkit-mask: url("data:image/svg+xml;charset=utf-8,[svg]") center center / contain no-repeat;
-}`;
-
-const allFileHeaderTmpl =
-`[class^='weui-icon-'] {
-  ${commonStyle}
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
   -webkit-mask: none center center / contain no-repeat;
 }
 `;
 
-const allFileTmpl =
+const fileTmpl =
 `.weui-icon-[name] {
   -webkit-mask-image: url("data:image/svg+xml;charset=utf-8,[svg]");
-}`;
+}
+`;
 /* eslint-disable */
 
 
@@ -37,24 +30,15 @@ function encodeSVG(svg) {
 
 function svg2css(svgMaps) {
   const svgNames = Object.keys(svgMaps);
-  if (svgNames.length === 1) {
-    const svgName = svgNames[0];
+  let allStyle = headerTmpl;
 
-    return singleFileTmpl
+  svgNames.forEach((svgName) => {
+    allStyle += fileTmpl
     .replace(/\[name]/g, svgName)
     .replace(/\[svg]/g, encodeSVG(svgMaps[svgName]));
-  } else {
-    let allStyle = allFileHeaderTmpl;
+  });
 
-    svgNames.forEach((svgName) => {
-      allStyle += allFileTmpl
-      .replace(/\[name]/g, svgName)
-      .replace(/\[svg]/g, encodeSVG(svgMaps[svgName]))
-      .concat('\n');
-    });
-
-    return allStyle;
-  }
+  return allStyle;
 }
 
 (function (root, factory) {

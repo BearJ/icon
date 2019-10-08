@@ -53,5 +53,5 @@ writeFile('.', `${ALL_FILE_NAME}.css`, allStyle);
 writeFile(
   '.',
   `${ALL_FILE_NAME}.js`,
-  `module.exports = ${JSON.stringify(svgMap)}`,
+  `/* eslint-disable */\nmodule.exports = ${JSON.stringify(svgMap)}`,
 );
