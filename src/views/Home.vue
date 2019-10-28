@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header
-      title="WeUI Icon"
+      title="WeUI Icon ( Beta )"
       desc="weui-icon 是一套同微信原生视觉体验一致的基础图标库，由微信官方设计团队为微信内网页量身设计，令用户的使用感知更加统一。"
     ></Header>
     <ul class="icon-list">
