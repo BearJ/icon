@@ -1,3 +1,10 @@
+### [v0.2.0](https://github.com/BearJ/icon/compare/v0.0.4...v0.2.0) (2020-03-15)
+
+#### Features
+* feat: 使用weui-icon v1.0.0([8baff59](https://github.com/BearJ/icon/commit/8baff59))
+
+
+
 ### [v0.0.4](http://git.code.oa.com/wx_fed/weixin_search_widget/compare/v0.0.3...v0.0.4) (2019-10-28)
 
 #### Features
