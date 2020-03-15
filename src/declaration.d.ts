@@ -19,9 +19,11 @@ declare module 'weui.js' {
   };
 }
 
-declare module '@/../styles/weui-icon.js' {
+declare module 'weui-icon/dist/weui-icon.js' {
   const content: { [name: string]: { [name: string]: string } };
   export default content;
 }
 
-declare function svg2css(map: Record<string, string>): string;
+declare module 'weui-icon/src/libs/svg2css.js' {
+  export default function(map: Record<string, string>): string;
+}

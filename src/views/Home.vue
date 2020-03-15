@@ -20,7 +20,10 @@
             :value="svgTypeName + '|' + svgName"
             v-model="checkedNames"
           />
-          <Icon :type="svgTypeName" :name="svgName" :map="typeSvgIcons"></Icon>
+          <div>
+            <Icon :type="svgTypeName" :name="svgName" :map="typeSvgIcons"></Icon>
+            <p>{{ svgName }}</p>
+          </div>
         </label>
       </li>
     </ul>
@@ -37,7 +40,8 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Header from '@/components/Header.vue';
 import Icon from '@/components/Icon.vue';
-import svgIcons from '@/../styles/weui-icon.js';
+import svgIcons from 'weui-icon/dist/weui-icon.js';
+import svg2css from 'weui-icon/src/libs/svg2css.js';
 
 export default Vue.extend({
   components: {
@@ -160,6 +164,9 @@ h4 {
   margin: 10px;
   display: inline-block;
   cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  width: 120px;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -170,7 +177,7 @@ h4 {
     position: absolute;
     visibility: hidden;
 
-    &:checked + [class^='weui-icon-'] {
+    &:checked + div {
       color: #07c160;
     }
   }

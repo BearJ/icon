@@ -1,4 +1,4 @@
-const origin = 'http://git.code.oa.com/wx_fed/weixin_search_widget';
+const origin = 'https://github.com/BearJ/icon';
 const comparePath = `${origin}/compare/`;
 const commitPath = `${origin}/commit/`;
 
